@@ -5,10 +5,24 @@ const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 const symbols = ["~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".","?",
 "/"]
 
-document.querySelector("#numberToggle").addEventListener("click", toggleSwitch)
-document.querySelector("#symbolToggle").addEventListener("click", toggleSwitch)
-document.querySelector("#copy1").addEventListener("click", function() {copyResult("result1")})
-document.querySelector("#copy2").addEventListener("click", function() {copyResult("result2")})
+const numberToggle = document.querySelector("#numberToggle")
+const symbolToggle = document.querySelector("#symbolToggle")
+const darkmodeToggle = document.querySelector("#darkmodeToggle")
+const copy1 = document.querySelector("#copy1")
+const copy2 = document.querySelector("#copy2")
+const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+let darkmodeValue = document.querySelector("#darkmode")
+
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    let darkmodeValue = document.querySelector("#darkmode")
+
+    if (currentTheme === 'dark') {
+        darkmodeValue.checked = true;
+        darkmodeToggle.classList.toggle("fa-toggle-on")
+        darkmodeToggle.classList.toggle("fa-toggle-off")
+    }
+}
 
 function generateStructureMap(structLen, includeNumbers, includeSymbols) {
     let structure = [...Array(structLen).keys()].map(i => i = i + 1)
@@ -87,11 +101,11 @@ function generatePassword() {
 
 }
 
-function toggleSwitch(e) {
+function toggleSwitch(e, checkboxId) {
     e.target.classList.toggle("fa-toggle-on")
     e.target.classList.toggle("fa-toggle-off")
 
-    let el = e.target.nextElementSibling
+    let el = document.querySelector(`#${checkboxId}`)
 
     if (el.checked) {
         el.checked = false
@@ -100,7 +114,26 @@ function toggleSwitch(e) {
     }
 }
 
+function toggleDarkmode(e) {
+    // darkmode code from https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8
+    darkmodeToggle.classList.toggle("fa-toggle-on")
+    darkmodeToggle.classList.toggle("fa-toggle-off")
+    let darkmodeValue = document.querySelector("#darkmode")
+
+    if (darkmodeValue.checked) {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        darkmodeValue.checked = false
+    }
+    else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        darkmodeValue.checked = true
+    }
+}
+
 function copyResult(id) {
+    // copy to clipboard code from https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
     let el = document.querySelector(`#${id}`)
 
     // Select the text field
@@ -114,3 +147,9 @@ function copyResult(id) {
     // alert("Copied the text: " + el.value);
 
 }
+
+numberToggle.addEventListener("click", function(e) { toggleSwitch(e, "numbers") })
+symbolToggle.addEventListener("click", function(e) { toggleSwitch(e, "symbols") })
+darkmodeToggle.addEventListener("click", toggleDarkmode)
+copy1.addEventListener("click", function() {copyResult("result1")})
+copy2.addEventListener("click", function() {copyResult("result2")})

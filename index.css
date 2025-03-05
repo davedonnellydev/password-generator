@@ -1,9 +1,9 @@
 :root {
-    --font-color-primary: #FFFFFF;
-    --font-color-secondary: #4ADF86;
-    --font-color-tertiary: #D5D4D8;
+    --font-color-primary: #2B283A;
+    --font-color-secondary: #10B981;
+    --font-color-tertiary: #6B7280;
 
-    --color-bg: #1F2937;
+    --color-bg: #ECFDF5;
     --style-color-primary: #10B981;
     --style-color-secondary: #273549;
 
@@ -93,5 +93,25 @@ button {
 .switch i {
    color: var(--style-color-primary);
    font-size: 2em;
-   transition-duration: 3s;
+}
+
+.password-header {
+    max-width: 300px;
+}
+
+input[type=text], input[type=number] {
+    background-color: var(--style-color-secondary);
+    color: var(--font-color-secondary);
+    border: none;
+    border-radius: 5px;
+}
+
+input[type=text] {
+    padding: 10px 20px;
+    margin: 0;
+}
+
+input[type=number] {
+    padding: 5px 15px;
+    margin: 0 5px;
 }
