@@ -95,10 +95,6 @@ button {
    font-size: 2em;
 }
 
-.password-header {
-    max-width: 300px;
-}
-
 input[type=text], input[type=number] {
     background-color: var(--style-color-secondary);
     color: var(--font-color-secondary);
@@ -114,4 +110,29 @@ input[type=text] {
 input[type=number] {
     padding: 5px 15px;
     margin: 0 5px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    padding: 1.5em;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+    align-items: center;
+}
+
+.option {
+    display: flex;
+    padding-bottom: 10px;
+    justify-content: space-around;
+}
+
+#generate {
+    width: 300px;
+    padding: 12px 15px;
+    margin: 10px 0;
 }

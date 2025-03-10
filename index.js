@@ -19,8 +19,8 @@ if (currentTheme) {
 
     if (currentTheme === 'dark') {
         darkmodeValue.checked = true;
-        darkmodeToggle.classList.toggle("fa-toggle-on")
-        darkmodeToggle.classList.toggle("fa-toggle-off")
+        darkmodeToggle.classList.toggle("fa-sun-bright")
+        darkmodeToggle.classList.toggle("fa-moon")
     }
 }
 
@@ -116,8 +116,8 @@ function toggleSwitch(e, checkboxId) {
 
 function toggleDarkmode(e) {
     // darkmode code from https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8
-    darkmodeToggle.classList.toggle("fa-toggle-on")
-    darkmodeToggle.classList.toggle("fa-toggle-off")
+    darkmodeToggle.classList.toggle("fa-sun-bright")
+    darkmodeToggle.classList.toggle("fa-moon")
     let darkmodeValue = document.querySelector("#darkmode")
 
     if (darkmodeValue.checked) {
