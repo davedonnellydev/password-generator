@@ -36,4 +36,4 @@ To run the project locally:
    cd password-generator
    ```
 
-3. Open `index.html` in your web browser. ([GitHub - davedonnellydev/password-generator: A password generator - a ...](https://github.com/davedonnellydev/password-generator?utm_source=chatgpt.com))
+3. Open `index.html` in your web browser.
